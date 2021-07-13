@@ -1,0 +1,39 @@
+Theory 1)
+
+Run 1) : 125 checks : Failed
+
+Run 2) : 129 checks : Failed
+
+Run 3) : 1 check : Passed
+
+Theory 2)
+
+Run 1) : 217 checks : Failed
+
+Run 2) : 104 checks : Failed
+
+Run 3) : 2 checks : Passed
+
+Theory 3)
+
+Run 1) 91 checks : Failed
+
+Run 2) 895 checks : Failed
+
+Run 3) 5 Checks : Passed
+
+Over 9 tests, each Theory only passed once with Theory 1 being the most
+consistent and seemingly most efficent, whereas the random method was dead
+last being the least efficent and least consistent with theory 2 being 
+right in the middle.
+
+It seemed very rare to get below 20 guesses with the only instances of this
+happening in where the case is solved.
+
+Theory 1: It seems to be the most efficent and consistent across the board,
+even if it has the same sucecss rating as the other two theories, this
+appears to be going about solving the case in the best way.
+
+Theory 2: Most likely a brute force approach, not super efficent but certainly better than a random search
+
+Theory 3: Worst approach, awful efficency and consistency, somehow got the job done once but did so in a manner that was less efficent that Theories 1 and 2.
