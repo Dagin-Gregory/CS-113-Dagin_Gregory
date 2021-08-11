@@ -1,115 +1,100 @@
+# RecursionTrees
+## Recursion and Tree Problems
 
-DoubleLinkedList
-##  Double Linked List Implementation
+**[//Insert Build Status Image//]**
 
-*[Insert Build Status Image]*
+## [Recursive] Change Calculator (based on Programming Project #7, pg. 291):
 
-> **"A list is only as strong as its weakest link."**
-> — Donald Knuth
+>Make sure to use the `edu.miracosta.cs113.change` to store your solution (files described below are within this package).
 
->**"If you find that you're spending almost all your time on theory, start turning some attention to practical things; it will improve your theories. If you find that you're spending almost all your time on practice, start turning some attention to theoretical things; it will improve your practice."**
-> — Donald Knuth 
+Using the provided ChangeCalculator class, implement the recursive method `calculateChange(int)` which will dispense change for a given amount of money. The method will **display and return** the total number of combinations of quarters, dimes, nickels, and pennies that equal the desired amount and all of the combinations as well. Avoid duplication.
 
-**Provide your implementation for a `DoubleLinkedList<E>`**.  Apart from a default constructor and `toString()` method, make sure to implement the methods from the `List` interface and create an inner class implementing `ListIterator` interface (in addition to the necessary static inner class `Node<E>`).  **You will be graded on having all the methods below implemented and passing all JUnit tests for the `List` interface in addition to the JUnit tests for its `ListIterator`.** Feel free to use code from the book (`KWLinkedList`) or slides.
+If you choose to use a data structure, it must be one that we've covered and you must thoroughly justify why it was the best choice (based on run-time efficiency): **[//here//]**
 
-`ListIterator` interface [methods](https://docs.oracle.com/javase/7/docs/api/java/util/ListIterator.html) to implement:
+Next, you will implement the method `printCombinationsToFile(int)`, which should contain a call to the recursive solution that you created. Creating a text file in the program's directory named `"CoinCombinations.txt"`, this method will write each combination produced to separate lines. This file will be read by the tester class to verify that your recursive solution avoids duplicate values.
 
-| return type | method + description |
-|--|--|
-| `void` | `add(E e)` |
-| | Inserts the specified element into the list (optional operation). |
-| `boolean` | `hasNext()` |
-| | Returns true if this list iterator has more elements when traversing the list in the forward direction. |
-| `boolean` | `hasPrevious()` |
-| | Returns true if this list iterator has more elements when traversing the list in the reverse direction. |
-| `E` | `next()` |
-| | Returns the next element in the list and advances the cursor position. |
-| `int` | `nextIndex()` |
-| | Returns the index of the element that would be returned by a subsequent call to next(). |
-| `E` | `previous()` |
-| | Returns the previous element in the list and moves the cursor position backwards. |
-| `int` | `previousIndex()` |
-| | Returns the index of the element that would be returned by a subsequent call to previous(). |
-| `void` | `remove()` |
-| | Removes from the list the last element that was returned by next() or previous() (optional operation). |
-| `void` | `set(E e)` |
-| | Replaces the last element returned by next() or previous() with the specified element (optional operation). |
+**_NOTE:_** _Your program should dispense the highest coin first (quarters, then dimes, then nickels, then pennies)._ The format for printing each combination is otherwise up to you- as long as the output is consistent. Valid String values include "1 quarter/s, 2 dime/s, 3 nickel/s, 4 penny/ies", "1Q 2D 3N 4P", and "[1, 2, 3, 4]". For example, the generated text file would then contain the following contents, where the given input is 10 cents:
 
-`List` Interface [methods](https://docs.oracle.com/javase/7/docs/api/java/util/List.html) to implement:
+`CoinCombinations.txt`
 
-| return type | method + description |
-|--|--|
-| `Iterator<E>` | `iterator()` |
-| | Returns an iterator over the elements in this list in proper sequence. |
-| `ListIterator<E>` | `listIterator()` |
-| | Returns a list iterator over the elements in this list (in proper sequence). |
-| `ListIterator<E>` | `listIterator(int index)` |
-| | Returns a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list. |
-| `boolean` | `add(E e)` |
-| | Appends the specified element to the end of this list (optional operation). |
-| `void` | `add(int index, E element)` |
-| | Inserts the specified element at the specified position in this list (optional operation). |
-| `void` | `clear()` |
-| | Removes all of the elements from this list (optional operation). |
-| `boolean` | `equals(Object o)` |
-| | Compares the specified object with this list for equality. |
-| `boolean` | `contains(Object o)` |
-| | Returns true if this list contains the specified element. |
-| `E` | `get(int index)` |
-| | Returns the element at the specified position in this list. |
-| `int` | `indexOf(Object o)` |
-| | Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. |
-| `int` | `lastIndexOf(Object o)` |
-| | Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element. |
-| `boolean` | `isEmpty()` |
-| | Returns true if this list contains no elements. |
-| `E` | `remove(int index)` |
-| | Removes the element at the specified position in this list (optional operation). |
-| `boolean` | `remove(Object o)` |
-| | Removes the first occurrence of the specified element from this list, if it is present (optional operation). |
-| `E` | `set(int index, E element)` |
-| | Replaces the element at the specified position in this list with the specified element (optional operation). |
-| `int` | `size()` |
-| | Returns the number of elements in this list. |
+```
+[0, 1, 0, 0]
+[0, 0, 2, 0]
+[0, 0, 1, 5]
+[0, 0, 0, 10]
+```
 
+The two methods will be tested using 5 cent increments between 5 cents and 30 cents, larger tests for 75 cents through 100, and values that are not multiples of 5 (3 through 101 cents). For example, 75 cents equates to 121 unique combinations.
 
+## Tree Intro problems (based on Self-Check problems on p. 303):
 
-These are the rest of  the`List` interface methods (**do not build these**, we will implement them later):
+>For the following problems, create a `doc` folder to store images in and insert them into the spaces provided using markdown.  You can scan low-resolution images, use websites like draw.io, or any software of your choosing as long as it is legible.
 
-| return type | method + description |
-|--|--|
-| `List<E>` | `subList(int fromIndex, int toIndex)` |
-| | Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive. |
-| `Object[]` | `toArray()` |
-| | Returns an array containing all of the elements in this list in proper sequence (from first to last element). |
-| `boolean` | `addAll(Collection<? extends E> c)` |
-| | Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator (optional operation). |
-| `boolean` | `addAll(int index, Collection<? extends E> c)` |
-| | Inserts all of the elements in the specified collection into this list at the specified position (optional operation). |
-| `boolean` | `containsAll(Collection<?> c)` |
-| | Returns true if this list contains all of the elements of the specified collection. |
-| `boolean` | `removeAll(Collection<?> c)` |
-| | Removes from this list all of its elements that are contained in the specified collection (optional operation). |
-| `int` | `hashCode()` |
-| | Returns the hash code value for this list. |
-| `default void` | `replaceAll(UnaryOperator<E> operator)` |
-| | Replaces each element of this list with the result of applying the operator to that element. |
-| `boolean` | `retainAll(Collection<?> c)` |
-| | Retains only the elements in this list that are contained in the specified collection (optional operation). |
-| `<T> T[]` | `toArray(T[] a)` |
-| | Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array. |
-| `default void` | `sort(Comparator<? super E> c)` |
-| | Sorts this list according to the order induced by the specified Comparator. |
-| `default Spliterator<E>` | `spliterator()` |
-| | Creates a Spliterator over the elements in this list. |
+1. Draw binary expression trees for the following infix expressions.  Your trees should enforce the Java rules for operator evaluation (higher-precedence operators before lower-precedence operators and left associativity.) Note: they should also preserve the order seen in the expressions.
+  - `x / y + a - b * c`
+
+  **[//Insert image here//]**
+  - `(x * a) - y / b * (c + d)`
+  
+  **[//Insert image here//]**
+  
+  - `(x + (a * (b - c)))/ d`
+  
+  **[//Insert image here//]**
+  
+2. Using the Huffman tree in the figure below:
+
+![Image of huffman code tree](doc/problemImages/huffman.png)
+
+  - Write the binary string for the message "scissors cuts paper":
+    - Binary String = `insert here`
+  - Decode the following binary string using the tree above:
+  `1100010001010001001011101100011111110001101010111101101001`
+    - Decoded String = `insert here`
+
+3. For each of the two trees shown below, answer these questions:
+- What is its height?
+- Is it a full tree?
+- Is it a complete tree?
+- Is it a binary search tree? If not, make it into a binary seach tree.
+
+![Image of tree for problem 3A](doc/problemImages/problem3A.png)
+
+`insert answers here`
+
+![Image of tree for problem 3B](doc/problemImages/problem3B.png)
+
+`insert answers here`
+
+4. For the binary trees shown below, indicat whether each tree is full, perfect, complete, or none of the above (note that a tree could be more than one of these!)
+
+![Image of tree for problem 4A](doc/problemImages/problem4A.png)
+
+`insert answers here`
+
+![Image of tree for problem 4B](doc/problemImages/problem4B.png)
+
+`insert answers here`
+
+![Image of tree for problem 4C](doc/problemImages/problem4C.png)
+
+`insert answers here`
+
+![Image of tree for problem 4A](doc/problemImages/huffman.png)
+
+`insert answers here`
+
+5. Represent the general tree below as a binary tree
+
+![Image of general tree for problem 5](doc/problemImages/problem5-general.png)
+
+**[//Insert image here//]**
 
 
 ----------
 
-
 ### Make sure to commit + push *before* the deadline to have your code be considered for grading.
 
->Pro-Tips:
->- Build the constructor and `toString` first, then build the `ListIterator` implementation to help you build the `List` interface methods.
->- **You don't need to document any methods that are overridden!** By using the `@Override` JavaDoc tag, when you generate the JavaDoc it will automatically connect the inherited documentation! Just don't forget to document constructors, helper methods, etc. ***#thanksJavaDoc***
->- Note that out of the ***"Do not implement"*** `List` interface methods, you have the knowledge to get the first 6 working! Since the parameters are `Collection` types (and every data structure we have built/will build implements `Collection`), you are familiar with most of the [standard methods](https://docs.oracle.com/javase/7/docs/api/java/util/Collection.html) it contains.  Try implementing them if you have some spare time!
+>Pro-Tip:
+
+>- Refer to the given documentation in the ChangeCalculator class as you plan and design your implementation of its methods.
